@@ -48,8 +48,8 @@ public class Main {
         for(int i = 0, n = 0; i < 10000000; i++) {
             int randomp = (int)(Math.random()*4);
             if(randomp <=1) move(matrix, fractions);
-            if(randomp ==2)creation(matrix, fractions);
-            if(randomp ==3)annihilation(matrix, fractions);
+            if(randomp ==2) creation(matrix, fractions);
+            if(randomp ==3) annihilation(matrix, fractions);
 
              if(i%1000 == 0 && (i < 100000 && i>=5000 ) ){
                     n =  (i/100) -50;
@@ -64,6 +64,14 @@ public class Main {
             }
             //System.out.println(energySys + " " + delta + " " + r);
         }
+        System.out.println("Result energy" + " " + energySys);
+
+        for(int i = 0; i < fractions.size(); i++){
+            energy(fractions, fractions.get(i));
+            energySys += fractions.get(i).u;
+        }
+        energySys = (energySys/2) ;
+        System.out.println("Result energy 1" + " " + energySys);
 
 
         new Plot().makePlot(masX, masY);
@@ -160,21 +168,21 @@ public class Main {
                         Math.pow((y - fraction.y), 2));
 
                 /* расчет координат для r2 */
-                if(fraction.x >= 19 && fraction.y >= 19 && x < 19 && y < 19)        {x+=40; y+=40;}
-                if(fraction.x >= 19 && fraction.y >= 19 && x >= 19 && y < 19)       {y+=40;}
-                if(fraction.x >= 19 && fraction.y >= 19 && x < 19 && y>= 19)        {x+=40;}
+                if(fraction.x >= 19 && fraction.y >= 19 && x < 19 && y < 19)        { x+=40; y+=40;}
+                if(fraction.x >= 19 && fraction.y >= 19 && x >= 19 && y < 19)       { y+=40;}
+                if(fraction.x >= 19 && fraction.y >= 19 && x < 19 && y>= 19)        { x+=40;}
 
-                if(fraction.x < 19 && fraction.y >= 19 && x >= 19 && y < 19)        {x-=40; y+=40;}
-                if(fraction.x < 19 && fraction.y >= 19 && x >= 19 && y >= 19)       {x-=40;}
-                if(fraction.x < 19 && fraction.y >= 19 && x < 19 && y < 19)         {y+=40;}
+                if(fraction.x < 19 && fraction.y >= 19 && x >= 19 && y < 19)        { x-=40; y+=40;}
+                if(fraction.x < 19 && fraction.y >= 19 && x >= 19 && y >= 19)       { x-=40;}
+                if(fraction.x < 19 && fraction.y >= 19 && x < 19 && y < 19)         { y+=40;}
 
                 if(fraction.x >= 19 && fraction.y < 19 && x < 19 && y >= 19)        { x+=40; y-=40;}
-                if(fraction.x >= 19 && fraction.y < 19 && x < 19 && y <19)          {x+=40;}
-                if(fraction.x >= 19 && fraction.y < 19 && x >= 19 && y >= 19)       {y-=40;}
+                if(fraction.x >= 19 && fraction.y < 19 && x < 19 && y <19)          { x+=40;}
+                if(fraction.x >= 19 && fraction.y < 19 && x >= 19 && y >= 19)       { y-=40;}
 
                 if(fraction.x < 19 && fraction.y < 19 && x >= 19 && y >= 19)        { x-=40; y-=40;}
-                if(fraction.x < 19 && fraction.y < 19 && x >= 19 && y < 19)         {x-=40;}
-                if(fraction.x < 19 && fraction.y < 19 && x < 19 && y >= 19)         {y-=40;}
+                if(fraction.x < 19 && fraction.y < 19 && x >= 19 && y < 19)         { x-=40;}
+                if(fraction.x < 19 && fraction.y < 19 && x < 19 && y >= 19)         { y-=40;}
 
 
                 r2 = Math.sqrt(Math.pow((fraction.x - x), 2) +
